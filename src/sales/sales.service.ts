@@ -11,7 +11,7 @@ export class SaleService {
     private readonly saleRepository: Repository<Sale>,
   ) {}
 
-  //metodo que crea el nuevo producto
+  //metodo que crea la nueva venta
   async create(saleDTO: CreateSaleDTO) {
     const sale = this.saleRepository.create(saleDTO);
     await this.saleRepository.save(sale);
@@ -19,24 +19,24 @@ export class SaleService {
     return sale;
   }
 
-  //metodo para visualizar todos los porductos
+  //metodo para visualizar todos las ventas
   findAll() {
     return this.saleRepository.find();
   }
 
-  //metodo para visualizar un producto en especifico
+  //metodo para visualizar una venta en especifica
   findOne(saleID: string) {
     return this.saleRepository.findOneBy({ saleID });
   }
 
-  //Remover un producto especifico
+  //Remover una venta especifica
   async remove(saleID: string) {
     const sale = await this.findOne(saleID);
     await this.saleRepository.remove(sale);
     return 'Venta eliminada satisfactoriamente';
   }
 
-  //Actualizar un producto especifico
+  //Actualizar una venta especifica
   async update(saleID: string, cambios: CreateSaleDTO) {
     const findSale = await this.findOne(saleID);
     const updatedSale = await this.saleRepository.merge(findSale, cambios);
