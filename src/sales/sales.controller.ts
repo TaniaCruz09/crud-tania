@@ -11,7 +11,7 @@ import {
 import { SaleService } from './sales.service';
 import { CreateSaleDTO } from './dto/computerStoreSales.dto';
 
-@Controller('sales')
+@Controller('venta')
 export class SalesController {
   constructor(private readonly saleServiceRepo: SaleService) {}
 
